@@ -1,0 +1,628 @@
+/* Font declarations */
+@font-face {
+    font-family: 'PP Pier Sans';
+    src: url('Fonts/PPPierSans-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'PP Pier Sans';
+    src: url('Fonts/PPPierSans-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Sequel Sans';
+    src: url('Fonts/sequel-100-black-95.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: block;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Removed background-image from universal selector */
+}
+
+body {
+    color: white;
+    font-family: 'PP Pier Sans', Arial, sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+    width: 100%;
+    background-image: url('images/Fundo rosa.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Standardized navigation styles */
+.logo img, .overlay-logo img {
+    height: 40px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover img, .overlay-logo:hover img {
+    transform: scale(1.05);
+}
+
+.logo, .overlay-logo {
+    position: relative;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 130px;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Background image container */
+.page-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url('images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+}
+
+/* Header with pink background */
+.header {
+    position: relative;
+    width: 100%;
+    padding: 40px 0 80px;
+}
+
+/* Main content */
+.main-content {
+    text-align: center;
+    padding: 60px 130px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-family: 'Sequel Sans', 'Impact', sans-serif;
+    font-size: 72px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    line-height: 1.2;
+}
+
+.intro-text {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Album Carousel Container */
+.album-carousel-container {
+    position: relative;
+    width: 100%;
+    padding: 50px 0;
+    overflow: hidden;
+}
+
+.album-carousel {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 40px;
+    padding: 0 10%;
+    transition: transform 0.5s ease;
+    width: max-content;
+    position: relative;
+    /* Add will-change to optimize performance */
+    will-change: transform;
+}
+
+/* Album Item */
+.album-item {
+    flex: 0 0 auto;
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin-bottom: 80px; /* Extra space for CD to show below */
+    cursor: pointer;
+}
+
+/* Album Cover Container - MODIFIED to slide left instead of up */
+.album-cover-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 20;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Album hover effect - MODIFIED to slide left more dramatically */
+.album-item:hover .album-cover-container {
+    transform: translateX(-80px); /* Increased from -25px to -80px */
+}
+
+/* Album Cover */
+.album-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Album Label */
+.album-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 12px;
+    color: white;
+    padding: 3px 6px;
+    border-radius: 2px;
+    z-index: 10;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* CD Container */
+.cd-container {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    top: 10%;
+    left: 10%;
+    z-index: 10;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Enhanced CD hover effect - Move CD to right when cover slides left */
+.album-item:hover .cd-container {
+    transform: translateX(25px); /* Move CD slightly to the right on hover */
+}
+
+/* CD appearance */
+.cd {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.5s ease;
+    /* CD base color - silver */
+    background: 
+        radial-gradient(
+            circle at center,
+            #ffffff 0%, 
+            #f0f0f0 20%, 
+            #e0e0e0 40%, 
+            #d0d0d0 60%, 
+            #c0c0c0 80%
+        );
+    overflow: hidden;
+}
+
+/* Make CD larger on hover for additional emphasis */
+.album-item:hover .cd {
+    transform: scale(1.1);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* CD image overlay instead of color overlay */
+.cd-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    mix-blend-mode: multiply; /* Blend mode to show through CD texture */
+    opacity: 0.7;
+}
+
+/* CD rainbow reflection */
+.cd-rainbow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: 
+        linear-gradient(
+            135deg, 
+            rgba(255,0,0,0.05) 0%, 
+            rgba(255,165,0,0.05) 16%, 
+            rgba(255,255,0,0.05) 33%, 
+            rgba(0,128,0,0.05) 50%, 
+            rgba(0,0,255,0.05) 66%, 
+            rgba(75,0,130,0.05) 83%, 
+            rgba(128,0,128,0.05) 100%
+        );
+    mix-blend-mode: screen;
+    opacity: 0.7;
+}
+
+/* Spin the CD on hover - updated for compatibility with scale effect */
+.album-item:hover .cd {
+    animation: spinCD 5s linear infinite;
+}
+
+.album-item.playing .cd {
+    animation: spinCD 5s linear infinite;
+}
+
+@keyframes spinCD {
+    0% { transform: rotate(0deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1.1); }
+}
+
+/* CD Center */
+.cd-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    z-index: 2;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CD inner hole */
+.cd-hole {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* CD track rings */
+.cd-tracks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: 
+        radial-gradient(
+            circle at center,
+            transparent 18%,
+            rgba(255, 255, 255, 0.05) 19%,
+            transparent 20%,
+            rgba(255, 255, 255, 0.05) 21%,
+            transparent 22%,
+            rgba(255, 255, 255, 0.05) 23%,
+            transparent 24%,
+            rgba(255, 255, 255, 0.05) 25%,
+            transparent 26%,
+            rgba(255, 255, 255, 0.05) 27%,
+            transparent 28%,
+            rgba(255, 255, 255, 0.05) 29%,
+            transparent 30%,
+            rgba(255, 255, 255, 0.05) 31%,
+            transparent 32%,
+            rgba(255, 255, 255, 0.05) 33%,
+            transparent 34%,
+            rgba(255, 255, 255, 0.05) 35%,
+            transparent 36%,
+            rgba(255, 255, 255, 0.05) 37%,
+            transparent 38%,
+            rgba(255, 255, 255, 0.05) 40%,
+            transparent 50%,
+            rgba(255, 255, 255, 0.05) 60%,
+            transparent 70%,
+            rgba(255, 255, 255, 0.05) 80%,
+            transparent 90%
+        );
+}
+
+/* Audio Indicator */
+.audio-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(233, 64, 137, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 30;
+}
+
+.audio-indicator.active {
+    opacity: 1;
+}
+
+.audio-indicator span {
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    border-radius: 50%;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.8); opacity: 0.7; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0.7; }
+}
+
+/* Play button in CD center */
+.play-button {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.play-button svg {
+    width: 14px;
+    height: 14px;
+    fill: #E94089;
+}
+
+/* Porto Tag */
+.porto-tag {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    z-index: 15;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0,0,0,0.5);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    /* Remove disabled state since we're now looping */
+    opacity: 1 !important; 
+}
+
+.carousel-control.prev {
+    left: 5%;
+}
+
+.carousel-control.next {
+    right: 5%;
+}
+
+.carousel-control:hover {
+    background-color: rgba(0,0,0,0.7);
+    transform: translateY(-50%) scale(1.1); /* Slightly enlarge on hover */
+}
+
+.carousel-control:active {
+    transform: translateY(-50%) scale(0.95); /* Slightly shrink on click */
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .navbar {
+        padding: 0 50px;
+    }
+    
+    .main-content {
+        padding: 60px 50px;
+    }
+    
+    .album-carousel {
+        padding: 0 5%;
+    }
+}
+
+@media (max-width: 992px) {
+    .album-item {
+        width: 220px;
+        height: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar, .main-content {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+    
+    .album-item {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .carousel-control {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .carousel-control.prev {
+        left: 10px;
+    }
+    
+    .carousel-control.next {
+        right: 10px;
+    }
+    
+    .logo img, .overlay-logo img {
+        height: 30px;
+    }
+    
+    .nav-links {
+        gap: 15px;
+    }
+    
+    .nav-links a {
+        font-size: 12px;
+    }
+}
+
+/* New Mobile Vertical Layout */
+@media (max-width: 767px) {
+    /* Change to vertical layout */
+    .album-carousel {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        gap: 30px;
+        padding: 0 20px;
+        align-items: center;
+        transform: none !important; /* Prevent horizontal scrolling */
+        transition: none;
+    }
+    
+    .album-carousel-container {
+        height: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 30px 0;
+    }
+    
+    /* Adjust each album item for vertical layout */
+    .album-item {
+        width: 280px;
+        height: 280px;
+        margin-bottom: 30px;
+    }
+    
+    /* Hide horizontal navigation controls */
+    .carousel-control {
+        display: none;
+    }
+    
+    /* Enhance touch interaction */
+    .album-item:active .album-cover-container,
+    .album-item.active .album-cover-container {
+        transform: translateX(-80px);
+    }
+    
+    .album-item:active .cd-container,
+    .album-item.active .cd-container {
+        transform: translateX(25px);
+    }
+    
+    /* Make play button more visible */
+    .play-button {
+        transform: scale(1.5);
+    }
+    
+    /* Make CD spin when playing */
+    .album-item.playing .cd {
+        animation: spinCD 5s linear infinite;
+    }
+    
+    /* Increase spacing to avoid unintentional touches */
+    .album-carousel {
+        padding-bottom: 50px;
+    }
+    
+    /* Make sure items don't get clipped */
+    .album-item:last-child {
+        margin-bottom: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0 15px;
+    }
+    
+    .logo img, .overlay-logo img {
+        height: 25px;
+    }
+    
+    .nav-links {
+        gap: 10px;
+    }
+    
+    /* Make album items take full width on very small screens */
+    .album-item {
+        width: 250px;
+        height: 250px;
+    }
+}

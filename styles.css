@@ -1,0 +1,922 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'PP Pier Sans';
+    src: url('Fonts/PPPierSans-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'PP Pier Sans';
+    src: url('Fonts/PPPierSans-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Sequel Sans';
+    src: url('Fonts/sequel-100-black-95.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: block;
+}
+
+:root {
+    --text-color: #ffffff;
+    --font-family: 'PP Pier Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --display-font: 'Sequel Sans', 'Impact', 'Arial Black', sans-serif;
+    --page-margin: 130px; /* Page margin */
+}
+
+/* Font-specific classes for the title elements */
+.pier-sans {
+    font-family: 'PP Pier Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+}
+
+.sequel-black {
+    font-family: 'Sequel Sans', 'Impact', 'Arial Black', sans-serif !important;
+}
+
+body {
+    color: white;
+    font-family: var(--font-family);
+    margin: 0;
+    overflow-x: hidden;
+    background-color: var(--background-color);
+    background-image: url('images/fundo_laranja.svg');
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Hero container that includes both video and navigation */
+.hero-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Full-height hero with video */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    z-index: 10;
+}
+
+/* Position logo in top left */
+.overlay-logo {
+    position: absolute;
+    top: 40px;
+    left: var(--page-margin);
+    z-index: 1000;
+}
+
+.overlay-logo img {
+    max-height: 40px;
+    width: auto;
+    display: block;
+}
+
+/* Position navigation in top right */
+.nav-links {
+    position: absolute;
+    top: 40px;
+    right: var(--page-margin);
+    display: flex;
+    gap: 25px;
+    z-index: 1000;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: var(--font-family);
+    letter-spacing: 1px;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+    /* Prepare for underline effect */
+    position: relative;
+    padding-bottom: 3px;
+}
+
+/* New underline effect on hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.title-container {
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 0.8; /* Tighter line height overall */
+}
+
+.overlay-title {
+    font-size: 64px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0; /* Remove all margins */
+    padding: 0; /* Remove all padding */
+    line-height: 1; /* Set consistent line height */
+    letter-spacing: 2px;
+    display: block; /* Ensure block display */
+}
+
+/* For the different font sizes, adjust line heights proportionally */
+.overlay-title.large {
+    line-height: 0.95; /* Slightly adjusted for larger font */
+}
+
+.overlay-title.largest {
+    line-height: 0.95; /* Slightly adjusted for largest font */
+}
+
+/* Centered title text styling */
+.title-container2 {
+    text-align: center;
+    z-index: 10;
+    margin-top: 120px; /* Increased top margin */
+}
+
+/* Added tighter line height for the second title container */
+.title-container2 .overlay-title {
+    line-height: 0.9;
+    margin-bottom: 10px;
+}
+
+/* Centered title text styling */
+.title-container3 {
+    text-align: center;
+    z-index: 10;
+    margin-top: 70px;
+}
+
+/* Added tighter line height for the third title container */
+.title-container3 .overlay-title {
+    line-height: 0.9;
+    margin-bottom: 10px;
+}
+
+/* Main content with margins */
+.main-content {
+    padding: 20px var(--page-margin) 0;
+    max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
+}
+
+h1 {
+    font-size: 72px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 100px 0;
+    font-family: var(--display-font);
+    letter-spacing: 2px;
+}
+
+/* New subtitle section between hero and text columns */
+.subtitle-section {
+    padding: 60px var(--page-margin) 20px;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.subtitle {
+    font-family: var(--display-font);
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.subtitle-decoration {
+    width: 150px;
+    height: 4px;
+    background-color: var(--red-bg);
+    margin: 0 auto 40px;
+}
+
+/* Updated text-columns to match the new example with red background */
+.text-section { 
+    padding: 80px 0;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.text-columns {
+    display: flex;
+    gap: 200px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    justify-content: center;
+}
+
+.column {
+    flex: 1;
+    line-height: 1.5;
+    max-width: 500px;
+}
+
+.column p {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: normal;
+    color: white;
+}
+
+/* Underlined text styling */
+.underlined {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* Cronologia section */
+.cronologia-section {
+    background-color: var(--background-color);
+    width: 100%;
+    padding: 80px 0 0;
+    position: relative;
+    margin: 40px 0 0;
+}
+
+.cronologia-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--page-margin);
+}
+
+h2 {
+    font-size: 84px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0 0 40px;
+    font-family: var(--display-font);
+    letter-spacing: 2px;
+    text-align: center;
+    color: white;
+}
+
+.cronologia-title {
+    font-size: 64px; /* CHANGED: To match "SEUS MALES" font size */
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0 0 40px;
+    font-family: var(--display-font);
+    letter-spacing: 2px;
+    text-align: center;
+    color: white;
+}
+
+/* Timeline scroll container - full width without margins */
+.scroll-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 80px;
+    overflow: visible;
+}
+
+/* Wrapper to allow the timeline to extend beyond the page margins */
+.timeline-wrapper {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    overflow: visible;
+}
+
+/* Timeline scroll */
+.timeline-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 30px; /* Increased from 20px for better spacing */
+    padding: 40px var(--page-margin); /* Add padding equal to page margins */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    height: 550px;
+    align-items: center;
+    scroll-behavior: smooth; /* Enable smooth scrolling */
+}
+
+/* Visual indicator when reaching end of scroll (optional) */
+.timeline-scroll.scroll-end {
+    /* You can add a subtle visual indicator here if desired */
+    /* For example: */
+    /* background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 95%, rgba(255,255,255,0.2) 100%); */
+}
+
+/* Hide scrollbar */
+.timeline-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+/* Timeline items */
+.timeline-item {
+    position: relative;
+    display: inline-block;
+    margin: 0 10px;
+    cursor: pointer;
+    overflow: hidden;
+    height: 480px;
+    flex: 0 0 auto;
+    transition: transform 0.3s ease;
+    border-radius: 4px;
+    width: 280px;
+}
+
+.timeline-item.small {
+    height: 320px;
+    width: 240px;
+}
+
+.timeline-item.medium {
+    height: 420px;
+    width: 260px;
+}
+
+.timeline-item.large {
+    height: 480px;
+    width: 300px;
+}
+
+.timeline-item img {
+    height: 100%;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.timeline-item:hover {
+    transform: translateY(-10px);
+}
+
+.timeline-item:hover img {
+    transform: scale(1.1);
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.5s ease;
+    z-index: 1;
+}
+
+.timeline-item.hover::after {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.item-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+    color: white;
+    z-index: 2;
+    display: none; /* Hide timeline item text */
+}
+
+.item-content h3 {
+    font-family: var(--display-font);
+    font-size: 32px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.item-content p {
+    font-family: var(--font-family);
+    font-size: 16px;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.footer-text {
+    text-align: center;
+    line-height: 1.5;
+    max-width: 750px;
+    margin: 0 auto 120px;
+}
+
+.footer-text p {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+/* IMPROVED: Faster animations for scroll effects */
+h1, h2, .subtitle, .subtitle-decoration, .cronologia-title, .text-columns, .scroll-container, .footer-text, .timeline-item {
+    opacity: 0;
+    transform: translateY(30px);
+    /* FIXED: Speed up transitions by reducing duration from 0.8s to 0.5s */
+    transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1), 
+                transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    will-change: opacity, transform;
+}
+
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FIXED: Faster animation for elements as they appear */
+.text-columns.fade-in, .footer-text.fade-in, .subtitle.fade-in {
+    /* FIXED: Speed up animation from 1.2s to 0.8s */
+    animation: subtle-scale 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Updated Playlist Section */
+.playlist-section {
+    width: 100%;
+    padding: 20px 0 120px;
+    position: relative;
+    background-color: var(--red-bg);
+    margin-top: 60px;
+}
+
+.playlist-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.playlist-title {
+    font-family: var(--display-font);
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0 0 10px;
+    text-align: center;
+    color: white;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1), 
+                transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.playlist-subtitle {
+    font-family: var(--display-font);
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0 0 40px;
+    text-align: center;
+    color: white;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1), 
+                transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.playlist-title.fade-in,
+.playlist-subtitle.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.spotify-embed {
+    max-width: 900px; /* INCREASED: from 700px to 900px */
+    margin: 60px auto 0;
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.spotify-embed.fade-in {
+    opacity: 1;
+}
+
+/* FIXED: Make subtle scale animation faster with midpoint */
+@keyframes subtle-scale {
+    0% {
+        transform: scale(0.98) translateY(30px);
+        opacity: 0;
+    }
+    /* ADDED: Add a midpoint for faster perception */
+    50% {
+        transform: scale(1.02) translateY(10px);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+    transform: translateY(20px);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.back-to-top svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Timeline Tracker Styles */
+.timeline-tracker-container {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto 60px;
+    padding: 0 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1), 
+                transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.timeline-tracker-container.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Line that spans the width */
+.timeline-tracker-line {
+    position: relative;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    overflow: visible;
+}
+
+/* Moving indicator on the line */
+.timeline-tracker-indicator {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: left 0.3s ease-out;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Subtitle display below the line */
+.timeline-subtitle {
+    text-align: center;
+    padding: 15px 0 0;
+    font-family: var(--font-family);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    min-height: 40px; /* Fixed height to prevent layout shifts */
+}
+
+.timeline-subtitle span {
+    display: inline-block;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Animation for subtitle change */
+.timeline-subtitle span.changing {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --page-margin: 60px;
+    }
+    
+    h1 {
+        font-size: 60px;
+    }
+    
+    h2 {
+        font-size: 48px;
+    }
+    
+    .cronologia-title {
+        font-size: 48px;
+    }
+    
+    .subtitle {
+        font-size: 36px;
+    }
+    
+    .text-columns {
+        gap: 40px;
+    }
+    
+    .column {
+        max-width: 450px;
+    }
+    
+    /* Responsive adjustments for timeline items */
+    .timeline-item {
+        width: 270px;
+    }
+    
+    .timeline-item.small {
+        width: 230px;
+    }
+    
+    .timeline-item.medium {
+        width: 250px;
+    }
+    
+    .timeline-item.large {
+        width: 290px;
+    }
+    
+    .overlay-title {
+        font-size: 56px;
+    }
+    
+    .overlay-title.large {
+        font-size: 68px;
+    }
+    
+    .overlay-title.largest {
+        font-size: 80px;
+    }
+    
+    .playlist-title,
+    .playlist-subtitle {
+        font-size: 40px;
+    }
+    
+    .spotify-embed {
+        max-width: 90%;
+    }
+    
+    /* Timeline tracker responsive adjustments */
+    .timeline-tracker-container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --page-margin: 30px;
+    }
+    
+    .overlay-logo {
+        top: 20px;
+    }
+    
+    .nav-links {
+        top: 20px;
+        gap: 15px;
+    }
+    
+    h1 {
+        font-size: 48px;
+        margin: 40px 0;
+    }
+    
+    h2 {
+        font-size: 36px;
+        margin: 30px 0 30px;
+    }
+    
+    .cronologia-title {
+        font-size: 36px;
+        margin: 30px 0 30px;
+    }
+    
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .subtitle {
+        font-size: 28px;
+    }
+    
+    .subtitle-decoration {
+        width: 120px;
+        height: 3px;
+        margin-bottom: 30px;
+    }
+    
+    .text-columns {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+    
+    .column {
+        max-width: 100%;
+    }
+    
+    .timeline-item {
+        height: 350px;
+        width: 240px;
+    }
+    
+    .timeline-item.small {
+        height: 350px;
+        width: 200px;
+    }
+    
+    .timeline-item.medium {
+        height: 350px;
+        width: 220px;
+    }
+    
+    .timeline-item.large {
+        height: 400px;
+        width: 260px;
+    }
+    
+    .overlay-title {
+        font-size: 40px;
+    }
+    
+    .overlay-title.large {
+        font-size: 50px;
+    }
+    
+    .overlay-title.largest {
+        font-size: 60px;
+    }
+    
+    .playlist-title,
+    .playlist-subtitle {
+        font-size: 32px;
+    }
+    
+    /* Timeline tracker responsive adjustments */
+    .timeline-tracker-container {
+        width: 95%;
+        margin: 10px auto 40px;
+    }
+    
+    .timeline-subtitle {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --page-margin: 20px;
+    }
+    
+    .overlay-logo {
+        top: 15px;
+    }
+    
+    .overlay-logo img {
+        max-height: 30px;
+    }
+    
+    .nav-links {
+        top: 15px;
+        gap: 10px;
+    }
+    
+    .nav-links a {
+        font-size: 12px;
+    }
+    
+    .text-columns {
+        padding: 0 15px;
+    }
+    
+    .subtitle {
+        font-size: 24px;
+    }
+    
+    .subtitle-decoration {
+        width: 100px;
+        height: 3px;
+        margin-bottom: 25px;
+    }
+    
+    .overlay-title {
+        font-size: 32px;
+    }
+    
+    .overlay-title.large {
+        font-size: 40px;
+    }
+    
+    .overlay-title.largest {
+        font-size: 48px;
+    }
+    
+    .playlist-title,
+    .playlist-subtitle {
+        font-size: 28px;
+    }
+    
+    /* Timeline tracker responsive adjustments */
+    .timeline-tracker-line {
+        height: 3px;
+    }
+    
+    .timeline-tracker-indicator {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .timeline-subtitle {
+        font-size: 12px;
+        padding-top: 10px;
+    }
+}
+
+/* Timeline item spacing for better distribution */
+.timeline-scroll {
+    gap: 30px;
+}

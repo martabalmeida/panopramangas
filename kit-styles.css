@@ -1,0 +1,140 @@
+/* Kit Colecionador Page Specific Styles */
+
+/* Background color override for this page */
+body {
+    background-image: url(images/fundo_lilás.svg);
+}
+
+/* Header - specific to kit page */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    padding: 40px 0 80px;
+}
+
+.logo img {
+    max-height: 40px;
+    width: auto;
+}
+
+/* Main Title */
+.main-title {
+    text-align: center;
+    margin: 60px 0 40px;
+}
+
+.main-title h1 {
+    font-family: var(--display-font);
+    font-size: 84px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: white;
+}
+
+/* Hero Image Section */
+.hero-image {
+    width: 100%;
+    padding: 0 var(--page-margin);
+    margin-bottom: 80px;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    padding: 0 var(--page-margin);
+    margin-bottom: 80px;
+}
+
+.product-item {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    aspect-ratio: 16/10;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: transparent; /* Remove the background color */
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Use cover to fill the container */
+    transition: transform 0.5s ease;
+}
+
+.product-item:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.product-info {
+    margin-top: 15px;
+}
+
+.product-info p {
+    font-size: 22px;
+    margin: 5px 0;
+    font-weight: 400;
+    color: white;
+}
+
+.product-info p:first-child {
+    font-weight: bold;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+    .main-title h1 {
+        font-size: 70px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 20px var(--page-margin);
+    }
+
+    .main-title h1 {
+        font-size: 54px;
+    }
+
+    .product-grid {
+        gap: 30px;
+    }
+
+    .product-info p {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title h1 {
+        font-size: 42px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
